@@ -24,7 +24,7 @@
             android:layout_height="80dp"
             android:id="@+id/donor_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/bloodman"
+
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
             />

@@ -26,12 +26,13 @@
                 android:hint="Enter Id"/>
 
         </android.support.design.widget.TextInputLayout>
-        <ImageView
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_search"
+            android:background="@android:drawable/ic_menu_search"
             android:layout_weight="0.3"
             android:layout_marginTop="10dp"
+            android:id="@+id/searchbtn"
             android:layout_marginRight="3dp"
             android:layout_marginLeft="3dp"/>
 
