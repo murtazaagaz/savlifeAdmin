@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin.pojo;
+package com.hackerkernel.admin.savlife.pojo;
 
 /**
  * Created by Murtaza on 6/1/2016.

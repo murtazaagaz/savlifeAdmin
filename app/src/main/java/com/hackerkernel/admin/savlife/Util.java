@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin;
+package com.hackerkernel.admin.savlife;
 
 import android.app.Activity;
 import android.content.Context;
@@ -31,21 +31,21 @@ public class Util {
     public static void showRedSnackbar(View layoutForSnacbar, String message){
         Snackbar snack = Snackbar.make(layoutForSnacbar,message,Snackbar.LENGTH_LONG);
         ViewGroup group = (ViewGroup) snack.getView();
-        group.setBackgroundColor(ContextCompat.getColor(MyApplication.getAppContext(), R.color.primary));
+        group.setBackgroundColor(ContextCompat.getColor(MyApplication.getAppContext(), com.hackerkernel.com.savlifeadmin.R.color.primary));
         snack.show();
     }
 
     public static void showParsingErrorAlert(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(R.string.oops))
-                .setMessage(context.getString(R.string.dont_worry_engineers_r_working)  )
-                .setNegativeButton(context.getString(R.string.report_issue), new DialogInterface.OnClickListener() {
+        builder.setTitle(context.getString(com.hackerkernel.com.savlifeadmin.R.string.oops))
+                .setMessage(context.getString(com.hackerkernel.com.savlifeadmin.R.string.dont_worry_engineers_r_working)  )
+                .setNegativeButton(context.getString(com.hackerkernel.com.savlifeadmin.R.string.report_issue), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO:: take user to report issue area
                     }
                 })
-                .setPositiveButton(context.getString(R.string.try_again), new DialogInterface.OnClickListener() {
+                .setPositiveButton(context.getString(com.hackerkernel.com.savlifeadmin.R.string.try_again), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -55,8 +55,8 @@ public class Util {
         dialog.show();
     }
     public static void noInternetSnackBar(final Activity activity, View snackBarLayout){
-        final Snackbar snackbar = Snackbar.make(snackBarLayout, R.string.no_internet_connection, Snackbar.LENGTH_INDEFINITE);
-        snackbar.setActionTextColor(ContextCompat.getColor(activity,R.color.primary));
+        final Snackbar snackbar = Snackbar.make(snackBarLayout, com.hackerkernel.com.savlifeadmin.R.string.no_internet_connection, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setActionTextColor(ContextCompat.getColor(activity, com.hackerkernel.com.savlifeadmin.R.color.primary));
         snackbar.show();
 
 

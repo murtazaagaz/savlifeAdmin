@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin.network;
+package com.hackerkernel.admin.savlife.network;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -9,7 +9,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.hackerkernel.httpwww.savlifeadmin.MyApplication;
+import com.hackerkernel.admin.savlife.MyApplication;
 
 /**
  * Created by Murtaza on 6/1/2016.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hackerkernel.httpwww.savlifeadmin">
+    package="com.hackerkernel.admin.savlife">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.activity.LoginActivity">
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.activity.HomeActivuty" />
-        <activity android:name=".activity.activity.AddDonorActivity" />
-        <activity android:name=".activity.activity.AddAdminActivity" />
-        <activity android:name=".activity.activity.AddDealsActivity" />
-        <activity android:name=".activity.DonorDetailActivity"></activity>
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.HomeActivuty" />
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.AddDonorActivity" />
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.AddAdminActivity" />
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.activity.AddDealsActivity" />
+        <activity android:name="com.hackerkernel.admin.com.savlifeadmin.activity.DonorDetailActivity"></activity>
     </application>
 
 </manifest>

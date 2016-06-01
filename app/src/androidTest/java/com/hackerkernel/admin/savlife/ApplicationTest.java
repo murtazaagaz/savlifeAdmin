@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin;
+package com.hackerkernel.admin.savlife;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin.activity.activity;
+package com.hackerkernel.admin.savlife.activity.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.hackerkernel.httpwww.savlifeadmin.R;
+import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.activity.HomeActivuty;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

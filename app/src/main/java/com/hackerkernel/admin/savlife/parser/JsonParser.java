@@ -1,9 +1,9 @@
-package com.hackerkernel.httpwww.savlifeadmin.parser;
+package com.hackerkernel.admin.savlife.parser;
 
-import com.hackerkernel.httpwww.savlifeadmin.constant.Constants;
-import com.hackerkernel.httpwww.savlifeadmin.pojo.DonorListPojo;
-import com.hackerkernel.httpwww.savlifeadmin.pojo.DonorPojo;
-import com.hackerkernel.httpwww.savlifeadmin.pojo.SimplePojo;
+import com.hackerkernel.admin.savlife.constant.Constants;
+import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
+import com.hackerkernel.admin.savlife.pojo.DonorPojo;
+import com.hackerkernel.admin.savlife.pojo.SimplePojo;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin;
+package com.hackerkernel.admin.savlife;
 
 import org.junit.Test;
 

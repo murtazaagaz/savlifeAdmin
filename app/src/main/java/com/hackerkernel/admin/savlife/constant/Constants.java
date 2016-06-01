@@ -1,4 +1,4 @@
-package com.hackerkernel.httpwww.savlifeadmin.constant;
+package com.hackerkernel.admin.savlife.constant;
 
 /**
  * Created by Murtaza on 6/1/2016.

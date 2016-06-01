@@ -1,9 +1,9 @@
-package com.hackerkernel.httpwww.savlifeadmin.activity.activity;
+package com.hackerkernel.admin.savlife.activity.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.hackerkernel.httpwww.savlifeadmin.R;
+import com.hackerkernel.com.savlifeadmin.R;
 
 public class AddDealsActivity extends AppCompatActivity {
 
