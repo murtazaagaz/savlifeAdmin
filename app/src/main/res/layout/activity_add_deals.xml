@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hackerkernel.admin.savlife.activity.activity.AddDealsActivity">
+    android:id="@+id/linear"
+    tools:context="com.hackerkernel.admin.savlife.activity.AddDealsActivity">
    <include layout="@layout/include_toolbar"/>
     <Button
         android:layout_width="match_parent"
