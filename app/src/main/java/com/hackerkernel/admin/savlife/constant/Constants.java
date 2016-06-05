@@ -27,7 +27,7 @@ public class Constants {
             COM_DATE = "date",
             COM_TIME = "time",
             LOC_CITY = "city",
-            COM_PASSWORD = "passwoed",
+            COM_PASSWORD = "password",
             COM_USERNAME = "username",
             COM_OFF = "off";
 }

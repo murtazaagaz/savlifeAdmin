@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SavLife</string>
+    <string name="app_name">SavLife Admin</string>
     <string name="save_lives_ndonate_blood">Save lives.\nDonate blood.</string>
     <string name="mobile_number">Mobile number</string>
     <string name="login">Login</string>
@@ -28,6 +28,9 @@
     <string name="search">Search</string>
     <string name="retry">retry</string>
     <string name="ok">ok</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="enter_donor_id">Enter Donor Id</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>

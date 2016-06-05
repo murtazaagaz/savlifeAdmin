@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.activity.DonorDetailActivity;
-import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
 
 import java.util.List;
@@ -50,7 +49,7 @@ public class DonorListAdapter extends RecyclerView.Adapter<DonorListAdapter.MyVi
         holder.bloodGroup.setText(pojo.getUserBloodGroup());
 
         if (!pojo.getImageUrl().isEmpty()){
-            String url = EndPoints.IMAGE_BASE_URL + pojo.getImageUrl();
+            String url = "" + pojo.getImageUrl();
 
             Glide.with(context)
                     .load(url)
@@ -88,7 +87,6 @@ public class DonorListAdapter extends RecyclerView.Adapter<DonorListAdapter.MyVi
             String id = mList.get(pos).getUserId();
             Intent intent = new Intent(context, DonorDetailActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
             context.startActivity(intent);
         }
     }

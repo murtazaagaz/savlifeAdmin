@@ -19,7 +19,7 @@ import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.network.MyVolley;
 import com.hackerkernel.admin.savlife.parser.JsonParser;
 import com.hackerkernel.admin.savlife.pojo.SimplePojo;
-import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.R;
 
 import org.json.JSONException;
 

@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,7 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.Util;
 import com.hackerkernel.admin.savlife.adapter.DonorListAdapter;
 import com.hackerkernel.admin.savlife.constant.Constants;
@@ -26,6 +26,7 @@ import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.network.MyVolley;
 import com.hackerkernel.admin.savlife.parser.JsonParser;
 import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
+import com.hackerkernel.admin.savlife.storage.MySP;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,84 +39,83 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class HomeActivuty extends AppCompatActivity{
-    //TODO Add api key and change api url
+public class HomeActivity extends AppCompatActivity{
+    private static final String TAG = HomeActivity.class.getSimpleName();
+    @Bind(R.id.search_edittext) EditText mSearchEdittext;
+    @Bind(R.id.search_recycleview) RecyclerView mRecyclerView;
+    @Bind(R.id.search_btn) Button mSearchBtn;
 
-
-
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.search_edittext)
-    EditText searchEditText;
-    @Bind(R.id.Search_recycleView)
-    RecyclerView mRecyclerView;
-    @Bind(R.id.searchbtn)
-    Button searchbtn;
     private RequestQueue mRequestQue;
-    TextView mPlaceholder;
     private ProgressDialog progressDialog;
-    private String searchId;
+    private String mDonorId;
+    private MySP sp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_activuty);
-        searchId = searchEditText.getText().toString();
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle("Search");
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //init volley
         mRequestQue = MyVolley.getInstance().getRequestQueue();
+
+        //init sp
+        sp = MySP.getInstance(this);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.please_Watit));
         progressDialog.setCancelable(true);
-        LinearLayoutManager linearLayoutManeger = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(linearLayoutManeger);
-        searchbtn.setOnClickListener(new View.OnClickListener() {
+
+        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(manager);
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                checkInternetAndDoSearch();
             }
         });
 
     }
     public void checkInternetAndDoSearch(){
         if (Util.isNetworkAvailable()){
+            mDonorId = mSearchEdittext.getText().toString().trim();
+            if (mDonorId.isEmpty()){
+                Util.showSimpleDialog(this,getString(R.string.oops),"Enter donor Id");
+                return;
+            }
             doSearchInBackground();
+        }else{
+            Util.showSimpleDialog(this,getString(R.string.oops),getString(R.string.no_internet_connection));
         }
     }
 
     private void doSearchInBackground() {
         progressDialog.show();
-        StringRequest request = new StringRequest(Request.Method.POST,
-                EndPoints.SEARCH_DONOR, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, EndPoints.SEARCH_DONOR, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                Log.d("TAG","MUR:"+response);
-                parseBestDonorResponse(response);
+                Log.d(TAG,"HUS: "+response);
+                //parseBestDonorResponse(response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Log.d("TAG","MUR: "+error.getMessage());
-                //TODO:: handle error
+                Log.d(TAG,"HUS: "+error.getMessage());
+                String errorString = MyVolley.handleVolleyError(error);
+                Toast.makeText(getApplicationContext(),errorString,Toast.LENGTH_LONG).show();
             }
         }){
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put(Constants.COM_APIKEY,"ADD API KEY");
-                params.put(Constants.COM_ID,searchId);
+                params.put(Constants.COM_APIKEY,Util.generateApiKey(sp.getAdminUsername()));
+                params.put(Constants.COM_USERNAME,sp.getAdminUsername());
+                params.put(Constants.COM_ID,mDonorId);
                 return params;
             }
         };
@@ -124,7 +124,7 @@ public class HomeActivuty extends AppCompatActivity{
 
     }
 
-    private void parseBestDonorResponse(String response) {
+    /*private void parseBestDonorResponse(String response) {
         try {
             JSONObject jsonObj = new JSONObject(response);
             boolean returned = jsonObj.getBoolean(Constants.COM_RETURN);
@@ -156,7 +156,7 @@ public class HomeActivuty extends AppCompatActivity{
             Util.showParsingErrorAlert(getApplicationContext());
         }
 
-    }
+    }*/
 
     private void setupDonorRecyclerView(List<DonorListPojo> list) {
         DonorListAdapter adapter = new DonorListAdapter(getApplicationContext());

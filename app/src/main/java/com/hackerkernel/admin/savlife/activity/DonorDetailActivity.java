@@ -17,7 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.Util;
 import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.constant.EndPoints;
@@ -73,7 +73,7 @@ public class DonorDetailActivity extends AppCompatActivity {
     private void fetchDetailDonorInBackground() {
         //show pb
         showProgressAndHideLayout(true);
-        StringRequest request = new StringRequest(Request.Method.POST, EndPoints.GET_DONOR_DETAIL, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, "", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 showProgressAndHideLayout(false); //hide pb
@@ -133,7 +133,7 @@ public class DonorDetailActivity extends AppCompatActivity {
         idDonor.setText("Id: "+pojo.getId());
         mLastDonated.setText(pojo.getLastDonated());
         //download image
-        String userImage = EndPoints.IMAGE_BASE_URL + pojo.getImageUrl();
+        String userImage = "" + pojo.getImageUrl();
         Glide.with(this)
                 .load(userImage)
                 .placeholder(R.drawable.placeholder_300_300)

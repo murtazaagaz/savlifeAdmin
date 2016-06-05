@@ -15,7 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.hackerkernel.com.savlifeadmin.R;
+import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.Util;
 import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.network.MyVolley;
