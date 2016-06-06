@@ -31,6 +31,12 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="enter_donor_id">Enter Donor Id</string>
+    <string name="search_donor">Search Donor</string>
+    <string name="add_donor">Add Donor</string>
+    <string name="donor_name">Donor Name</string>
+    <string name="donor_mobile">Donor Mobile</string>
+    <string name="donor_city_name">Donor city name</string>
+    <string name="hurray">Hurray!</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>

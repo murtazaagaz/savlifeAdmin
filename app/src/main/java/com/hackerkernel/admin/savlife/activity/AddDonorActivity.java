@@ -25,6 +25,7 @@ import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.network.MyVolley;
 import com.hackerkernel.admin.savlife.parser.JsonParser;
 import com.hackerkernel.admin.savlife.pojo.SimplePojo;
+import com.hackerkernel.admin.savlife.storage.MySP;
 
 import org.json.JSONException;
 
@@ -35,43 +36,45 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class AddDonorActivity extends AppCompatActivity {
-   //TODO change api url and add api key
-
     private static final String TAG = AddDonorActivity.class.getSimpleName();
-    @Bind(R.id.reg_layout_for_snackbar)
-    ScrollView mLayoutForSnackbar;
-    @Bind(R.id.reg_fullname)
-    EditText mFullname;
-    @Bind(R.id.reg_mobile) EditText mMobile;
-    @Bind(R.id.reg_gender_group)
-    RadioGroup mGenderGroup;
-    @Bind(R.id.reg_age) EditText mAge;
-    @Bind(R.id.reg_blood_group)
-    Spinner mBloodGroup;
-    @Bind(R.id.reg_button)
-    Button mRegButton;
-
-    private String mUserFullname;
+    private String mUserName;
     private String mUserMobile;
     private String mUserGender;
     private String mUserAge;
     private String mUserBloodGroup;
+    private String mUserCity;
 
     private RequestQueue mRequestQueue;
     private ProgressDialog pd;
+    private MySP sp;
+
+    @Bind(R.id.add_donor_name) EditText mName;
+    @Bind(R.id.add_donor_mobile) EditText mMobile;
+    @Bind(R.id.add_donor_gender_group) RadioGroup mGenderGroup;
+    @Bind(R.id.add_donor_age) EditText mAge;
+    @Bind(R.id.add_donor_blood) Spinner mBloodGroup;
+    @Bind(R.id.add_donor_btn) Button mRegButton;
+    @Bind(R.id.add_donor_city) EditText mCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donor);
+        ButterKnife.bind(this);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(R.string.add_donor);
+        }
+
+        //init sp
+        sp = MySP.getInstance(this);
+
         mRequestQueue = MyVolley.getInstance().getRequestQueue();
 
         //init pd
         pd = new ProgressDialog(this);
         pd.setMessage(getString(R.string.please_Watit));
         pd.setCancelable(true);
-
-        ButterKnife.bind(this);
 
         /*
         * When Register button is clicked
@@ -85,34 +88,35 @@ public class AddDonorActivity extends AppCompatActivity {
     }
     private void checkInternetAndRegister() {
         if (Util.isNetworkAvailable()){
-            mUserFullname = mFullname.getText().toString().trim();
+            mUserName = mName.getText().toString().trim();
             mUserMobile = mMobile.getText().toString().trim();
+            mUserCity = mCity.getText().toString().trim().toLowerCase();
             int genderId = mGenderGroup.getCheckedRadioButtonId();
             mUserAge = mAge.getText().toString().trim();
             mUserBloodGroup = (String) mBloodGroup.getSelectedItem();
-            if (genderId == R.id.reg_gender_male){
+            if (genderId == R.id.add_donor_gender_male){
                 mUserGender = "Male";
             }else {
                 mUserGender = "Female";
             }
 
-            if (mUserFullname.isEmpty() || mUserMobile.isEmpty() || mUserAge.isEmpty() || mUserBloodGroup.isEmpty() || mUserGender.isEmpty()){
-                Util.showRedSnackbar(mLayoutForSnackbar,"Fill in all the fields");
+            if (mUserName.isEmpty() || mUserMobile.isEmpty() || mUserAge.isEmpty() || mUserBloodGroup.isEmpty() || mUserGender.isEmpty()){
+                Util.showSimpleDialog(this,getString(R.string.oops),"Fill in all the fields");
                 return;
             }
 
-            if (mUserFullname.length() <= 3){
-                Util.showRedSnackbar(mLayoutForSnackbar,"Fullname should be more then 3 character");
+            if (mUserName.length() <= 3){
+                Util.showSimpleDialog(this,getString(R.string.oops),"Fullname should be more then 3 character");
                 return;
             }
 
             if (mUserMobile.length() != 10){
-                Util.showRedSnackbar(mLayoutForSnackbar,"Invalid mobile number");
+                Util.showSimpleDialog(this,getString(R.string.oops),"Invalid mobile number");
                 return;
             }
 
             if (Integer.parseInt(mUserAge) < 18){
-                Util.showRedSnackbar(mLayoutForSnackbar,"You must be 18 to register for "+getString(R.string.app_name));
+                Util.showSimpleDialog(this,getString(R.string.oops),"You must be 18 to register");
                 return;
             }
 
@@ -121,7 +125,6 @@ public class AddDonorActivity extends AppCompatActivity {
         }else {
             Toast.makeText(getApplicationContext(), R.string.no_internet_available,Toast.LENGTH_LONG).show();
             //go to no internet activity
-
         }
     }
 
@@ -130,7 +133,7 @@ public class AddDonorActivity extends AppCompatActivity {
     * */
     private void doRegisterInBackground() {
         pd.show();
-        StringRequest request = new StringRequest(Request.Method.POST, "", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, EndPoints.ADD_DONOR, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 pd.dismiss();
@@ -145,19 +148,21 @@ public class AddDonorActivity extends AppCompatActivity {
                 //handle Volley error
                 String errorString = MyVolley.handleVolleyError(error);
                 if (errorString != null){
-                    Util.showRedSnackbar(mLayoutForSnackbar,errorString);
+                    Toast.makeText(getApplicationContext(),errorString,Toast.LENGTH_LONG).show();
                 }
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put(Constants.COM_APIKEY,"API");
-                params.put(Constants.COM_FULLNAME,mUserFullname);
+                params.put(Constants.COM_APIKEY,Util.generateApiKey(sp.getAdminUsername()));
+                params.put(Constants.COM_USERNAME,sp.getAdminUsername());
+                params.put(Constants.COM_FULLNAME,mUserName);
                 params.put(Constants.COM_MOBILE,mUserMobile);
                 params.put(Constants.COM_AGE,mUserAge);
                 params.put(Constants.COM_BLOOD,mUserBloodGroup);
                 params.put(Constants.COM_GENDER,mUserGender);
+                params.put(Constants.COM_CITY,mUserCity);
                 return params;
             }
         };
@@ -172,10 +177,10 @@ public class AddDonorActivity extends AppCompatActivity {
         try {
             SimplePojo current = JsonParser.SimpleParser(response);
             if (current.isReturned()){
-                //go to OTP verification activity
-               Toast.makeText(getApplicationContext(),"Register SuccesFull",Toast.LENGTH_LONG).show();
+
+                Util.showSimpleDialog(this,getString(R.string.hurray),current.getMessage());
             }else {
-                Util.showRedSnackbar(mLayoutForSnackbar,current.getMessage());
+                Util.showSimpleDialog(this,getString(R.string.oops),current.getMessage());
             }
         } catch (JSONException e) {
             e.printStackTrace();

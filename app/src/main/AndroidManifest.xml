@@ -20,7 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.AddDonorActivity" />
+        <activity android:name=".activity.AddDonorActivity"
+            android:parentActivityName=".activity.AddDonorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" />
+        </activity>
         <activity android:name=".activity.AddAdminActivity" />
         <activity android:name=".activity.AddDealsActivity" />
         <activity android:name=".activity.DonorDetailActivity"/>
