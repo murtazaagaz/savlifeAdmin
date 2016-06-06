@@ -13,6 +13,7 @@ public class Constants {
             COM_BLOOD = "blood",
             COM_RETURN = "return",
             COM_MESSAGE = "message",
+            COM_CITY = "city",
             COM_OTP = "otp",
             COM_DATA = "data",
             COM_CREATED_AT = "created_at",
@@ -26,7 +27,6 @@ public class Constants {
             COM_STATUS = "status",
             COM_DATE = "date",
             COM_TIME = "time",
-            LOC_CITY = "city",
             COM_PASSWORD = "password",
             COM_USERNAME = "username",
             COM_OFF = "off";

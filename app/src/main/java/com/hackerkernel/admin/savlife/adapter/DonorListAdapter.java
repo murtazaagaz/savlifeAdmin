@@ -1,21 +1,29 @@
 package com.hackerkernel.admin.savlife.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hackerkernel.admin.savlife.R;
+import com.hackerkernel.admin.savlife.Util;
 import com.hackerkernel.admin.savlife.activity.DonorDetailActivity;
+import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by Murtaza on 6/1/2016.
@@ -23,10 +31,10 @@ import java.util.List;
 public class DonorListAdapter extends RecyclerView.Adapter<DonorListAdapter.MyViewHolder> {
     private static final String TAG = DonorListAdapter.class.getSimpleName();
     private List<DonorListPojo> mList;
-    private Context context;
+    private Activity context;
 
 
-    public DonorListAdapter(Context context) {
+    public DonorListAdapter(Activity context) {
         this.context = context;
     }
 
@@ -44,20 +52,30 @@ public class DonorListAdapter extends RecyclerView.Adapter<DonorListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        DonorListPojo pojo = mList.get(position);
-        holder.userName.setText(pojo.getUserName());
-        holder.bloodGroup.setText(pojo.getUserBloodGroup());
+        DonorListPojo current = mList.get(position);
+        holder.donorName.setText(current.getFullname());
+        holder.donorBlood.setText(current.getBlood());
+        holder.donorGender.setText(current.getGender());
+        holder.donorAge.setText(current.getAge()+" years old");
+        holder.donorMobile.setText(current.getMobile());
+        holder.donorCity.setText(current.getCity());
+        if (current.getLastDontaion().equals("null")){
+            holder.donorLastDonation.setText("N/A");
+        }else {
+            holder.donorLastDonation.setText("Last donation: "+current.getLastDontaion());
+        }
 
-        if (!pojo.getImageUrl().isEmpty()){
-            String url = "" + pojo.getImageUrl();
 
+        if (!current.getImgUrl().isEmpty()){
+            String url = EndPoints.IMAGE_BASE_URL + current.getImgUrl();
+            Log.d(TAG,"HUS: "+url);
             Glide.with(context)
                     .load(url)
                     .thumbnail(0.5f)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(holder.userImage);
+                    .into(holder.donorImage);
         }else {
-            holder.userImage.setImageResource(R.drawable.placeholder_80_80);
+            holder.donorImage.setImageResource(R.drawable.placeholder_80_80);
         }
 
     }
@@ -68,26 +86,29 @@ public class DonorListAdapter extends RecyclerView.Adapter<DonorListAdapter.MyVi
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView userName, bloodGroup;
-        private ImageView userImage;
+        @Bind(R.id.list_donor_image) ImageView donorImage;
+        @Bind(R.id.list_donor_name) TextView donorName;
+        @Bind(R.id.list_donor_blood) TextView donorBlood;
+        @Bind(R.id.list_donor_gender) TextView donorGender;
+        @Bind(R.id.list_donor_age) TextView donorAge;
+        @Bind(R.id.list_donor_mobile) TextView donorMobile;
+        @Bind(R.id.list_donor_city) TextView donorCity;
+        @Bind(R.id.list_donor_last_donation) TextView donorLastDonation;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
             itemView.setOnClickListener(this);
-            userName = (TextView) itemView.findViewById(R.id.donor_name);
-            bloodGroup = (TextView) itemView.findViewById(R.id.blood_group_text);
-            userImage = (ImageView) itemView.findViewById(R.id.donor_image);
 
         }
 
         @Override
         public void onClick(View v) {
             int pos = getAdapterPosition();
-            String id = mList.get(pos).getUserId();
-            Intent intent = new Intent(context, DonorDetailActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            String mobile = mList.get(pos).getMobile();
+            //make a call to the number
+            Util.dialNumber(context,mobile);
         }
     }
 

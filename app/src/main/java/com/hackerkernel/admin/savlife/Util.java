@@ -6,12 +6,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.hackerkernel.admin.savlife.activity.HomeActivity;
 import com.hackerkernel.admin.savlife.pojo.ApiEncrypter;
@@ -95,5 +97,15 @@ public class Util {
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    public static void dialNumber(Activity activity, String phonenumber){
+        Uri callUri = Uri.parse("tel://"+phonenumber);
+        Intent callIntent = new Intent(Intent.ACTION_CALL,callUri);
+        try{
+            activity.startActivity(callIntent);
+        }catch (SecurityException e){
+            Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
     }
 }

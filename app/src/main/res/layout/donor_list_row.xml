@@ -1,52 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    card_view:cardElevation="3dp"
-    card_view:cardCornerRadius="3dp"
-    card_view:cardUseCompatPadding="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:focusable="true"
-    android:clickable="true">
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/list_donor_image"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:weightSum="4">
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:id="@+id/list_donor_name"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/list_donor_image"
+        android:layout_toEndOf="@+id/list_donor_image" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="80dp"
-            android:id="@+id/donor_image"
-            android:scaleType="centerCrop"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_blood"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_gender"
+        android:layout_below="@+id/list_donor_name"
+        android:layout_marginTop="5dp"
+        android:layout_alignLeft="@+id/list_donor_name"
+        android:layout_alignStart="@+id/list_donor_name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_age"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@+id/list_donor_gender"
+        android:layout_below="@+id/list_donor_blood" />
 
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_mobile"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/list_donor_gender"
+        android:layout_alignLeft="@+id/list_donor_gender"
+        android:layout_alignStart="@+id/list_donor_gender"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="2.7"
-            android:layout_height="wrap_content"
-            android:id="@+id/donor_name"
-            android:ellipsize="end"
-            android:textColor="@color/primary_text"
-            style="@style/Base.TextAppearance.AppCompat.Medium"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_city"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@+id/list_donor_mobile" />
 
-        <TextView
-            android:layout_weight="0.3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:id="@+id/blood_group_text"
-            android:textColor="@color/primary"
-            android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_donor_last_donation"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/list_donor_mobile"
+        android:layout_alignLeft="@+id/list_donor_gender"
+        android:layout_alignStart="@+id/list_donor_gender"/>
 
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/icons"
+        android:layout_below="@id/list_donor_last_donation"
+        android:layout_marginTop="5dp"/>
+</RelativeLayout>
 

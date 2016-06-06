@@ -44,6 +44,7 @@ public class HomeActivity extends AppCompatActivity{
     @Bind(R.id.search_edittext) EditText mSearchEdittext;
     @Bind(R.id.search_recycleview) RecyclerView mRecyclerView;
     @Bind(R.id.search_btn) Button mSearchBtn;
+    @Bind(R.id.search_placeholder) TextView mPlaceholder;
 
     private RequestQueue mRequestQue;
     private ProgressDialog progressDialog;
@@ -98,7 +99,7 @@ public class HomeActivity extends AppCompatActivity{
             public void onResponse(String response) {
                 progressDialog.dismiss();
                 Log.d(TAG,"HUS: "+response);
-                //parseBestDonorResponse(response);
+                parseBestDonorResponse(response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -124,29 +125,20 @@ public class HomeActivity extends AppCompatActivity{
 
     }
 
-    /*private void parseBestDonorResponse(String response) {
+    private void parseBestDonorResponse(String response) {
         try {
             JSONObject jsonObj = new JSONObject(response);
             boolean returned = jsonObj.getBoolean(Constants.COM_RETURN);
             String message = jsonObj.getString(Constants.COM_MESSAGE);
             if (returned){
-                int count = jsonObj.getInt(Constants.COM_COUNT);
-                //when no donor found for this place
-                if (count <= 0){
-                    mRecyclerView.setVisibility(View.GONE);
-                    mPlaceholder.setVisibility(View.VISIBLE);
-                    mPlaceholder.setText(message);
-                }else {
-                    //donor found
-                    mPlaceholder.setVisibility(View.GONE);
-                    mRecyclerView.setVisibility(View.VISIBLE);
+                //donor found
+                mPlaceholder.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
 
-                    JSONArray dataArray = jsonObj.getJSONArray(Constants.COM_DATA);
-                    List<DonorListPojo> list = JsonParser.DonorListParser(dataArray);
-                    setupDonorRecyclerView(list);
-                }
+                JSONArray dataArray = jsonObj.getJSONArray(Constants.COM_DATA);
+                List<DonorListPojo> list = JsonParser.DonorListParser(dataArray);
+                setupDonorRecyclerView(list);
             }else {
-                //some auth error
                 mRecyclerView.setVisibility(View.GONE);
                 mPlaceholder.setVisibility(View.VISIBLE);
                 mPlaceholder.setText(message);
@@ -156,10 +148,10 @@ public class HomeActivity extends AppCompatActivity{
             Util.showParsingErrorAlert(getApplicationContext());
         }
 
-    }*/
+    }
 
     private void setupDonorRecyclerView(List<DonorListPojo> list) {
-        DonorListAdapter adapter = new DonorListAdapter(getApplicationContext());
+        DonorListAdapter adapter = new DonorListAdapter(this);
         adapter.setList(list);
         mRecyclerView.setAdapter(adapter);
     }

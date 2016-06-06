@@ -8,6 +8,7 @@ public class EndPoints {
     private static final String VERSION = "v1admin/";
     private static final String BASE_URL = SERVER_URL + VERSION;
     public static final String LOGIN = BASE_URL + "login.php",
-            SEARCH_DONOR = BASE_URL + "searchDonor.php";
+            SEARCH_DONOR = BASE_URL + "searchDonor.php",
+            IMAGE_BASE_URL = SERVER_URL;
 
 }
