@@ -37,6 +37,12 @@
     <string name="donor_mobile">Donor Mobile</string>
     <string name="donor_city_name">Donor city name</string>
     <string name="hurray">Hurray!</string>
+    <string name="select_image">Select Image</string>
+    <string name="enter_lab_name">Enter lab name</string>
+    <string name="enter_description">Enter description</string>
+    <string name="original_price">Original price</string>
+    <string name="special_price">Special price</string>
+    <string name="add_deal">Add Deal</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>
