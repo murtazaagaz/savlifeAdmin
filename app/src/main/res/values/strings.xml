@@ -47,6 +47,7 @@
     <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="add_admin">Add Admin</string>
+    <string name="booked_deal_list">Booked Deal list</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>

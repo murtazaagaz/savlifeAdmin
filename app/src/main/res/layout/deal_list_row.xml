@@ -3,26 +3,35 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="3">
+    android:weightSum="4">
 
     <TextView
         android:layout_width="0dp"
         android:layout_weight="0.5"
         android:layout_height="wrap_content"
-        android:id="@+id/deal_id"/>
+        android:id="@+id/deal_id"
+        android:text="1"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1.5"
         android:layout_height="wrap_content"
-        android:id="@+id/deal_labname"/>
+        android:id="@+id/deal_labname"
+        android:text="saify hospital"/>
 
-    <Button
+    <TextView
         android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.1"
         android:layout_height="wrap_content"
-        android:id="@+id/deal_deactivate_btn"
-        android:text="Deactivate"/>
+        android:id="@+id/deal_mobile"
+        android:text="8962239913"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="0.9"
+        android:layout_height="wrap_content"
+        android:id="@+id/deal_time"
+        android:text="4 hours ago"/>
 
 
 </LinearLayout>

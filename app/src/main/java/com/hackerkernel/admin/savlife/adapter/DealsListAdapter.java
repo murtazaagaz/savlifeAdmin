@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.pojo.DealListPojo;
+import com.hackerkernel.admin.savlife.util.Util;
 
 import java.util.List;
 
@@ -39,10 +39,14 @@ public class DealsListAdapter extends ArrayAdapter {
         DealListPojo current = list.get(position);
         TextView id  = (TextView) view.findViewById(R.id.deal_id);
         TextView labname = (TextView) view.findViewById(R.id.deal_labname);
-        Button deactivate = (Button) view.findViewById(R.id.deal_deactivate_btn);
+        TextView mobile = (TextView) view.findViewById(R.id.deal_mobile);
+        TextView time = (TextView) view.findViewById(R.id.deal_time);
+
         id.setText(current.getId());
         labname.setText(current.getLabName());
-        deactivate.setTag(current.getId());
+        mobile.setText(current.getMobile());
+        long timestamp = Long.parseLong(current.getTime());
+        time.setText(Util.getTimeAgo(timestamp));
         return view;
     }
 

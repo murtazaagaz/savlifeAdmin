@@ -53,7 +53,7 @@ public class DealsListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle("Deals list");
+            getSupportActionBar().setTitle("Booked Deals list");
         }
 
         //init vollet

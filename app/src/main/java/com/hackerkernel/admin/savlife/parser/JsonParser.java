@@ -49,8 +49,9 @@ public class JsonParser {
             JSONObject jo = data.getJSONObject(i);
             DealListPojo pojo = new DealListPojo();
             pojo.setId(jo.getString(Constants.COM_ID));
-            pojo.setImageUrl(jo.getString(Constants.COM_IMAGE));
             pojo.setLabName(jo.getString(Constants.COM_LABNAME));
+            pojo.setMobile(jo.getString(Constants.COM_MOBILE));
+            pojo.setTime(jo.getString(Constants.COM_TIME));
             list.add(pojo);
         }
         return list;

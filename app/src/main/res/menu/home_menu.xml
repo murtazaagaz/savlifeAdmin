@@ -19,5 +19,5 @@
 
     <item android:orderInCategory="5"
         android:id="@+id/menu_deal_list"
-        android:title="Deal list"/>
+        android:title="@string/booked_deal_list"/>
 </menu>
