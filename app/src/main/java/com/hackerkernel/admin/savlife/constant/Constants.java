@@ -28,5 +28,6 @@ public class Constants {
             COM_TIME = "time",
             COM_PASSWORD = "password",
             COM_USERNAME = "username",
+            COM_NEW_USERNAME = "new_username",
             COM_CODE = "code";
 }

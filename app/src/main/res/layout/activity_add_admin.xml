@@ -3,74 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   android:orientation="vertical"
+    android:orientation="vertical"
     android:id="@+id/linear"
-    tools:context=".activity.AddAdminActivity">
-   <include layout="@layout/include_toolbar"/>
-    <android.support.design.widget.TextInputLayout
+    tools:context=".activity.AddAdminActivity"
+    android:padding="10dp">
+
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_name"
-            android:hint="Enter Name"/>
+        android:id="@+id/admin_username"
+        android:inputType="text"
+        android:hint="@string/enter_username"/>
 
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_username"
-            android:hint="Enter UserName"/>
+        android:id="@+id/admin_password"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"/>
 
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_mobile"
-            android:hint="Enter Mobile"/>
-
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_password"
-            android:hint="Enter Password"
-            android:inputType="textVisiblePassword"/>
-
-
-    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/add_admin_btn"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Add Admin"/>
+        android:text="@string/add_admin"/>
 
 </LinearLayout>

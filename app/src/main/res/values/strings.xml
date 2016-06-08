@@ -44,6 +44,9 @@
     <string name="special_price">Special price</string>
     <string name="add_deal">Add Deal</string>
     <string name="enter_deal_code">Enter deal code</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="add_admin">Add Admin</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>

@@ -12,4 +12,8 @@
     <item android:orderInCategory="3"
         android:id="@+id/menu_add_deals"
         android:title="@string/add_deal"/>
+
+    <item android:orderInCategory="4"
+        android:id="@+id/menu_add_admin"
+        android:title="@string/add_admin"/>
 </menu>
