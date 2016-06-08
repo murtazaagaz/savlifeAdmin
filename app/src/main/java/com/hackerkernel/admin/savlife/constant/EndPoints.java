@@ -9,6 +9,6 @@ public class EndPoints {
             IMAGE_BASE_URL = SERVER_URL,
             ADD_DONOR = BASE_URL + "addDonor.php",
             ADD_DEAL = BASE_URL + "addDeals.php",
-            ADD_ADMIN =  BASE_URL + "addAdmin.php";
-
+            ADD_ADMIN =  BASE_URL + "addAdmin.php",
+            DEAL_LIST = BASE_URL + "getDealsList.php";
 }

@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hackerkernel.admin.savlife.R;
-import com.hackerkernel.admin.savlife.Util;
+import com.hackerkernel.admin.savlife.util.Util;
 import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.parser.JsonParser;

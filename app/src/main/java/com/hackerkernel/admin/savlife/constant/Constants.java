@@ -8,6 +8,7 @@ public class Constants {
             COM_FULLNAME = "fullname",
             COM_MOBILE = "mobile",
             COM_IMG = "img",
+            COM_IMAGE = "image",
             COM_GENDER = "gender",
             COM_AGE = "age",
             COM_BLOOD = "blood",

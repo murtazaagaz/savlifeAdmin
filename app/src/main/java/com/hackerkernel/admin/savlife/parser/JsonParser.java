@@ -1,8 +1,8 @@
 package com.hackerkernel.admin.savlife.parser;
 
 import com.hackerkernel.admin.savlife.constant.Constants;
+import com.hackerkernel.admin.savlife.pojo.DealListPojo;
 import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
-import com.hackerkernel.admin.savlife.pojo.DonorPojo;
 import com.hackerkernel.admin.savlife.pojo.SimplePojo;
 
 import org.json.JSONArray;
@@ -43,18 +43,16 @@ public class JsonParser {
         return list;
     }
 
-    public static DonorPojo DetailDonorParser(JSONArray dataArray) throws JSONException {
-        DonorPojo pojo = new DonorPojo();
-        for (int i = 0; i <dataArray.length() ; i++) {
-            JSONObject obj = dataArray.getJSONObject(i);
-            pojo.setFullName(obj.getString(Constants.COM_FULLNAME));
-            pojo.setCity(obj.getString(Constants.COM_CITY));
-            pojo.setAge(obj.getString(Constants.COM_AGE));
-            pojo.setBloodGroup(obj.getString(Constants.COM_BLOOD));
-            pojo.setGender(obj.getString(Constants.COM_GENDER));
-            pojo.setId(obj.getString(Constants.COM_ID));
-            pojo.setImageUrl(obj.getString(Constants.COM_IMG));
+    public static List<DealListPojo> DealListParser(JSONArray data) throws JSONException {
+        List<DealListPojo> list = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject jo = data.getJSONObject(i);
+            DealListPojo pojo = new DealListPojo();
+            pojo.setId(jo.getString(Constants.COM_ID));
+            pojo.setImageUrl(jo.getString(Constants.COM_IMAGE));
+            pojo.setLabName(jo.getString(Constants.COM_LABNAME));
+            list.add(pojo);
         }
-        return pojo;
+        return list;
     }
 }

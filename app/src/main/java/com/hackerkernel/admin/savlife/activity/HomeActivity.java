@@ -22,13 +22,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hackerkernel.admin.savlife.R;
-import com.hackerkernel.admin.savlife.Util;
+import com.hackerkernel.admin.savlife.pojo.DealListPojo;
+import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
+import com.hackerkernel.admin.savlife.util.Util;
 import com.hackerkernel.admin.savlife.adapter.DonorListAdapter;
 import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.network.MyVolley;
 import com.hackerkernel.admin.savlife.parser.JsonParser;
-import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
 import com.hackerkernel.admin.savlife.storage.MySP;
 
 import org.json.JSONArray;
@@ -104,6 +105,9 @@ public class HomeActivity extends AppCompatActivity{
                 break;
             case R.id.menu_add_admin:
                     startActivity(new Intent(this,AddAdminActivity.class));
+                break;
+            case R.id.menu_deal_list:
+                    startActivity(new Intent(this,DealsListActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

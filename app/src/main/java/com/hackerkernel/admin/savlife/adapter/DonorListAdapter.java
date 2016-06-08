@@ -1,8 +1,6 @@
 package com.hackerkernel.admin.savlife.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hackerkernel.admin.savlife.R;
-import com.hackerkernel.admin.savlife.Util;
-import com.hackerkernel.admin.savlife.activity.DonorDetailActivity;
-import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.pojo.DonorListPojo;
+import com.hackerkernel.admin.savlife.util.Util;
+import com.hackerkernel.admin.savlife.constant.EndPoints;
 
 import java.util.List;
 

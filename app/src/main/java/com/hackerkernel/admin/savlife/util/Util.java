@@ -1,4 +1,4 @@
-package com.hackerkernel.admin.savlife;
+package com.hackerkernel.admin.savlife.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,8 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.hackerkernel.admin.savlife.MyApplication;
+import com.hackerkernel.admin.savlife.R;
 import com.hackerkernel.admin.savlife.activity.HomeActivity;
-import com.hackerkernel.admin.savlife.pojo.ApiEncrypter;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

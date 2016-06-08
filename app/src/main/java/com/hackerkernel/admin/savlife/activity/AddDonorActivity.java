@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,7 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.hackerkernel.admin.savlife.R;
-import com.hackerkernel.admin.savlife.Util;
+import com.hackerkernel.admin.savlife.util.Util;
 import com.hackerkernel.admin.savlife.constant.Constants;
 import com.hackerkernel.admin.savlife.constant.EndPoints;
 import com.hackerkernel.admin.savlife.network.MyVolley;

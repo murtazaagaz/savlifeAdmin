@@ -40,7 +40,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.HomeActivity" />
         </activity>
-        <activity android:name=".activity.DonorDetailActivity"/>
+        <activity android:name=".activity.DealsListActivity"
+            android:parentActivityName=".activity.AddDonorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
