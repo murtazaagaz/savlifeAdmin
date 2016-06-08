@@ -14,7 +14,6 @@ public class Constants {
             COM_RETURN = "return",
             COM_MESSAGE = "message",
             COM_CITY = "city",
-            COM_OTP = "otp",
             COM_DATA = "data",
             COM_CREATED_AT = "created_at",
             COM_COUNT = "count",
@@ -29,5 +28,5 @@ public class Constants {
             COM_TIME = "time",
             COM_PASSWORD = "password",
             COM_USERNAME = "username",
-            COM_OFF = "off";
+            COM_CODE = "code";
 }

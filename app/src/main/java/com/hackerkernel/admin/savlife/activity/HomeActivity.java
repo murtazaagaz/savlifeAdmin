@@ -99,6 +99,9 @@ public class HomeActivity extends AppCompatActivity{
             case R.id.menu_add_donor:
                     startActivity(new Intent(this,AddDonorActivity.class));
                 break;
+            case R.id.menu_add_deals:
+                    startActivity(new Intent(this,AddDealsActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

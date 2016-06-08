@@ -18,6 +18,11 @@ import android.widget.Toast;
 import com.hackerkernel.admin.savlife.activity.HomeActivity;
 import com.hackerkernel.admin.savlife.pojo.ApiEncrypter;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Murtaza on 6/1/2016.
  */
@@ -107,5 +112,26 @@ public class Util {
         }catch (SecurityException e){
             Toast.makeText(activity,e.getMessage(),Toast.LENGTH_LONG).show();
         }
+    }
+
+    /*
+    * Method to get post data Url
+    * from
+    * HashMap
+    * */
+    public static String getPostDataFromHashmap(HashMap<String,String> param) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for (Map.Entry<String,String> entry: param.entrySet()){
+            if (first)
+                first = false;
+            else
+                result.append("&");
+
+            result.append(URLEncoder.encode(entry.getKey(),"UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(entry.getValue(),"UTF-8"));
+        }
+        return result.toString();
     }
 }

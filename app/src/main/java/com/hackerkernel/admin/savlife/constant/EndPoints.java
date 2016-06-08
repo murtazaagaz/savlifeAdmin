@@ -7,6 +7,7 @@ public class EndPoints {
     public static final String LOGIN = BASE_URL + "login.php",
             SEARCH_DONOR = BASE_URL + "searchDonor.php",
             IMAGE_BASE_URL = SERVER_URL,
-            ADD_DONOR = BASE_URL + "addDonor.php";
+            ADD_DONOR = BASE_URL + "addDonor.php",
+            ADD_DEAL = BASE_URL + "addDeals.php";
 
 }

@@ -4,7 +4,12 @@
         android:orderInCategory="1"
         android:id="@+id/menu_search_donor"
         android:title="@string/search_donor"/>
+
     <item android:orderInCategory="2"
         android:id="@+id/menu_add_donor"
         android:title="@string/add_donor"/>
+
+    <item android:orderInCategory="3"
+        android:id="@+id/menu_add_deals"
+        android:title="@string/add_deal"/>
 </menu>
