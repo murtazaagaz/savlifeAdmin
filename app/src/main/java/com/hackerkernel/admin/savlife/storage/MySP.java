@@ -66,4 +66,7 @@ public class MySP {
         return mSharedPreference.getString(KEY_USERNAME, KEY_DEFAULT) != null;
     }
 
+    public void logout(){
+        mSharedPreference.edit().clear().apply();
+    }
 }

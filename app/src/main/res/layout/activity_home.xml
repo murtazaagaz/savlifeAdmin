@@ -4,54 +4,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.HomeActivity">
+    tools:context=".activity.HomeActivity"
+    android:padding="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:id="@+id/linear"
-        android:weightSum="1"
-        android:layout_height="wrap_content">
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.7"
-            android:theme="@style/MyTextInput"
-            android:layout_marginRight="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/search_edittext"
-                android:inputType="number"
-                android:hint="@string/enter_donor_id"/>
-
-        </android.support.design.widget.TextInputLayout>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="@string/search"
-            android:layout_marginTop="10dp"
-            android:id="@+id/search_btn"
-            android:layout_marginRight="3dp"
-            android:layout_marginLeft="3dp"/>
-
-    </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/search_recycleview"
-        android:visibility="gone"/>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         style="@style/Base.TextAppearance.AppCompat.Medium"
-        android:id="@+id/search_placeholder"/>
+        android:text="You next bill date 10/06/2016. After that admin app will be blocked"
+        android:id="@+id/bill_due_next_date"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_bill"
+        android:id="@+id/pay_bill_btn"
+        android:onClick="openPayBill"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/divider"/>
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow android:weightSum="2">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/search_donor"
+                android:onClick="openSearchDonor"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/add_donor"
+                android:onClick="openAddDonor"/>
+        </TableRow>
+
+        <TableRow android:weightSum="2">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/add_deal"
+                android:onClick="openAddDeal"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/add_admin"
+                android:onClick="openAddAdmin"/>
+        </TableRow>
+
+        <TableRow android:weightSum="2">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/booked_deal_list"
+                android:onClick="openBookedDealList"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/send_notification"
+                android:onClick="openSendNotification"/>
+        </TableRow>
+        <TableRow android:weightSum="2">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                android:onClick="logoutTheUser"/>
+        </TableRow>
+
+    </TableLayout>
 </LinearLayout>

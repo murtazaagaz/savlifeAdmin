@@ -48,6 +48,11 @@
     <string name="enter_password">Enter Password</string>
     <string name="add_admin">Add Admin</string>
     <string name="booked_deal_list">Booked Deal list</string>
+    <string name="pay_bill">Pay bill</string>
+    <string name="send_notification">Send notification</string>
+    <string name="logout">Logout</string>
+    <string name="notification_title">Notification Title</string>
+    <string name="notification_message">Notification Message</string>
     <string-array name="blood_group_name">
         <item>O-</item>
         <item>O+</item>

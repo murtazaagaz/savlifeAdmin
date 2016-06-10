@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hackerkernel.admin.savlife">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.LoginActivity">
@@ -21,26 +22,43 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.AddDonorActivity"
+        <activity
+            android:name=".activity.AddDonorActivity"
             android:parentActivityName=".activity.AddDonorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.HomeActivity" />
         </activity>
-        <activity android:name=".activity.AddDealsActivity"
+        <activity
+            android:name=".activity.AddDealsActivity"
             android:parentActivityName=".activity.AddDonorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.HomeActivity" />
         </activity>
-
-        <activity android:name=".activity.AddAdminActivity"
+        <activity
+            android:name=".activity.AddAdminActivity"
             android:parentActivityName=".activity.AddDonorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.HomeActivity" />
         </activity>
-        <activity android:name=".activity.DealsListActivity"
+        <activity
+            android:name=".activity.DealsListActivity"
+            android:parentActivityName=".activity.AddDonorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" />
+        </activity>
+        <activity android:name=".activity.SearchDonorActivity" />
+        <activity
+            android:name=".activity.PayBillActivity"
+            android:parentActivityName=".activity.AddDonorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" />
+        </activity>
+        <activity android:name=".activity.SendNotificationActivity"
             android:parentActivityName=".activity.AddDonorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

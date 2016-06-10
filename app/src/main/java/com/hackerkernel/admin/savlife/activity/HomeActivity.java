@@ -45,14 +45,10 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity{
     private static final String TAG = HomeActivity.class.getSimpleName();
-    @Bind(R.id.search_edittext) EditText mSearchEdittext;
-    @Bind(R.id.search_recycleview) RecyclerView mRecyclerView;
-    @Bind(R.id.search_btn) Button mSearchBtn;
-    @Bind(R.id.search_placeholder) TextView mPlaceholder;
+
 
     private RequestQueue mRequestQue;
     private ProgressDialog progressDialog;
-    private String mDonorId;
     private MySP sp;
 
 
@@ -71,124 +67,41 @@ public class HomeActivity extends AppCompatActivity{
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.please_Watit));
         progressDialog.setCancelable(true);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(manager);
-
-        mSearchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkInternetAndDoSearch();
-            }
-        });
-
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu,menu);
-        return super.onCreateOptionsMenu(menu);
+    public void openSearchDonor(View view) {
+        startActivity(new Intent(this,SearchDonorActivity.class));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_search_donor:
-                    startActivity(new Intent(this,HomeActivity.class));
-                break;
-            case R.id.menu_add_donor:
-                    startActivity(new Intent(this,AddDonorActivity.class));
-                break;
-            case R.id.menu_add_deals:
-                    startActivity(new Intent(this,AddDealsActivity.class));
-                break;
-            case R.id.menu_add_admin:
-                    startActivity(new Intent(this,AddAdminActivity.class));
-                break;
-            case R.id.menu_deal_list:
-                    startActivity(new Intent(this,DealsListActivity.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+    public void openPayBill(View view) {
+        startActivity(new Intent(this,PayBillActivity.class));
     }
 
-    public void checkInternetAndDoSearch(){
-        if (Util.isNetworkAvailable()){
-            mDonorId = mSearchEdittext.getText().toString().trim();
-            if (mDonorId.isEmpty()){
-                Util.showSimpleDialog(this,getString(R.string.oops),"Enter donor Id");
-                return;
-            }
-            doSearchInBackground();
-        }else{
-            Util.showSimpleDialog(this,getString(R.string.oops),getString(R.string.no_internet_connection));
-        }
+    public void openAddDonor(View view) {
+        startActivity(new Intent(this,AddDonorActivity.class));
     }
 
-    private void doSearchInBackground() {
-        progressDialog.show();
-        StringRequest request = new StringRequest(Request.Method.POST, EndPoints.SEARCH_DONOR, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Log.d(TAG,"HUS: "+response);
-                parseBestDonorResponse(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Log.d(TAG,"HUS: "+error.getMessage());
-                String errorString = MyVolley.handleVolleyError(error);
-                Toast.makeText(getApplicationContext(),errorString,Toast.LENGTH_LONG).show();
-            }
-        }){
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put(Constants.COM_APIKEY,Util.generateApiKey(sp.getAdminUsername()));
-                params.put(Constants.COM_USERNAME,sp.getAdminUsername());
-                params.put(Constants.COM_ID,mDonorId);
-                return params;
-            }
-        };
-
-        mRequestQue.add(request);
-
+    public void openAddDeal(View view) {
+        startActivity(new Intent(this,AddDealsActivity.class));
     }
 
-    private void parseBestDonorResponse(String response) {
-        try {
-            JSONObject jsonObj = new JSONObject(response);
-            boolean returned = jsonObj.getBoolean(Constants.COM_RETURN);
-            String message = jsonObj.getString(Constants.COM_MESSAGE);
-            if (returned){
-                //donor found
-                mPlaceholder.setVisibility(View.GONE);
-                mRecyclerView.setVisibility(View.VISIBLE);
-
-                JSONArray dataArray = jsonObj.getJSONArray(Constants.COM_DATA);
-                List<DonorListPojo> list = JsonParser.DonorListParser(dataArray);
-                setupDonorRecyclerView(list);
-            }else {
-                mRecyclerView.setVisibility(View.GONE);
-                mPlaceholder.setVisibility(View.VISIBLE);
-                mPlaceholder.setText(message);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Util.showParsingErrorAlert(getApplicationContext());
-        }
-
+    public void openAddAdmin(View view) {
+        startActivity(new Intent(this,AddAdminActivity.class));
     }
 
-    private void setupDonorRecyclerView(List<DonorListPojo> list) {
-        DonorListAdapter adapter = new DonorListAdapter(this);
-        adapter.setList(list);
-        mRecyclerView.setAdapter(adapter);
+    public void openBookedDealList(View view) {
+        startActivity(new Intent(this,DealsListActivity.class));
     }
 
+    public void openSendNotification(View view) {
+        startActivity(new Intent(this,SendNotificationActivity.class));
+    }
 
+    public void logoutTheUser(View view) {
+        sp.logout();
+        Intent intent = new Intent(this,LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 }
