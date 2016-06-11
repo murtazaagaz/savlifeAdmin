@@ -52,11 +52,7 @@
         </activity>
         <activity android:name=".activity.SearchDonorActivity" />
         <activity
-            android:name=".activity.PayBillActivity"
-            android:parentActivityName=".activity.AddDonorActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.HomeActivity" />
+            android:name=".activity.PayBillActivity">
         </activity>
         <activity android:name=".activity.SendNotificationActivity"
             android:parentActivityName=".activity.AddDonorActivity">

@@ -13,8 +13,6 @@ public class PayBillActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay_bill);
         if (getSupportActionBar() != null){
             getSupportActionBar().setTitle(R.string.pay_bill);
-            getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
     }

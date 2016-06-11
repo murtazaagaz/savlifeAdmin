@@ -11,5 +11,7 @@ public class EndPoints {
             ADD_DEAL = BASE_URL + "addDeals.php",
             ADD_ADMIN =  BASE_URL + "addAdmin.php",
             DEAL_LIST = BASE_URL + "getDealsList.php",
-            SEND_NOTIFICATION = BASE_URL + "sendPushNotification.php";
+            SEND_NOTIFICATION = BASE_URL + "sendPushNotification.php",
+            GET_NEXT_BILL_DATE = BASE_URL + "getNextBilldate.php",
+            CHECK_BILL_DATE = BASE_URL + "checkBilldate.php";
 }
